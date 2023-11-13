@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PotterCast</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll on small screens */
+            background-color: #f0f0f0; /* Set a background color for the body */
+        }
+
+        #container {
+            border-radius: 20px;
+            background-color: rgba(19, 16, 16, 0.4);
+            max-width: 600px;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            position: relative;
+            overflow-y: auto; /* Enable vertical scrolling for the container */
+            max-height: 100vh;
+            padding-left:20px;
+            padding-right:20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+
+        #video-container {
+            width: 100%;
+            position: relative;
+            padding-bottom: 56.25%; /* Maintain 16:9 aspect ratio for the video */
+            margin-bottom: 20px;
+        }
+
+        #youtube-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #lyrics-container {
+            color: white;
+            text-align: right;
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            direction: rtl;
+        }
+
+        #background-image {
+            width: 100%;
+            height: 100%;
+            display: none; /* Hide by default on small screens */
+            position: absolute;
+            top: 0;
+            left: 100%; /* Align to the right of the container */
+            transform: translateX(-100%);
+        }
+
+        #title {
+            width: 100%;
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: 30px;
+            text-align: right;
+            color: white;
+        }
+
+        .subtitle {
+            width: 100%;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 5px;
+            text-align: right;
+            color: white;
+        }
+
+        .subsubtitle {
+            width: 100%;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 5px;
+            text-align: right;
+            color: white;
+        }
+
+        #header {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .seperator {
+            width: 100%;
+            height: 1px;
+            background-color: white;
+        }
+
+        @media (min-width: 600px) {
+            /* Show background image on screens larger than 799px */
+            #background-image {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+    <img id="background-image" src="pc.jpeg" alt="Background Image">
+    <div id="container">
+        <div id="header">
+            <p id="title">פוטרקאסט</p>
+            <p class="subtitle">בראי של ינפתא</p>
+            <p class="seperator"></p>
+            <p class="subsubtitle">מילים: מורן קלפר, יותם רוזנטל, נועם כליפה</p>
+            <p class="subsubtitle">לחן: יותם רוזנטל</p>
+
+        </div>
+        
+        <div id="video-container">
+            <iframe id="youtube-video" src="https://www.youtube.com/embed/qCwuRI-xqfo?si=NTztakaLvPhx2Usx" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
+        <div id="lyrics-container">
+            <!-- Add your lyrics content here -->
+            <p>
+                בית 1<br/>
+                הרכבת להוגוורטס כבר יצאה,<br/>
+                אני והיא כבר לא נהיה ביחד,<br/>
+                עוד דקה ועוד דקה עברה,<br/>
+                אני גריפינדור אבל מולה מלא בפחד.<br/><br/>
+
+                מוכן לרוץ ליער האסור,<br/>
+                להתמודד עם כל המפלצות לבד,<br/>
+                אבל, בבקשה, אל תבקשו ממני,<br/>
+                להזמין אותה לנשף חג המולד.<br/><br/>
+
+                פזמון:<br/>
+                מה לא שמעת?<br/>
+                אנחנו ביחד בראי של ינפתא,<br/>
+                הלב שלי כמו זנבקרנית הונגרית,<br/>
+                הוא משתולל בלי תכלית.<br/><br/>
+
+                בית 2:<br/>
+                אולי מישהו כישף אותי,<br/>
+                כי רק בך אני מתאהב,<br/>
+                להקה של ויליות עברו לידך,<br/>
+                אבל אני לא מצליח להתלהב.<br/><br/>
+
+                פזמון 2:<br/>
+                מה לא שמעת?<br/>
+                אנחנו ביחד בראי של ינפתא,<br/>
+                הלב שלי כמו נימבוס 2000<br/>
+                איתך הוא מרחף בשמיים<br/><br/>
+
+                מה לא שמעת?<br/>
+                אנחנו ביחד, בראי של ינפתא<br/>
+                מה לא הרגשת?<br/>
+                הלב שלי הוא כמו, כמו,<br/><br/>
+
+                הרכבת להוגוורטס כבר יצאה<br/>
+                אני והיא כבר לא נהיה ביחד<br/>
+            </p>
+        </div>
+      </div>
+        
+    </div>
+</body>
+</html>
