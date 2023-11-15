@@ -23,7 +23,7 @@
         align-items: start;
         position: relative;
         overflow-y: auto;
-        max-height: 100vh;
+        height: 100vh;
         padding-left: 20px;
         padding-right: 20px;
         box-shadow: 21px 2px 78px 0 rgba(0, 0, 0, 0.63);
@@ -53,6 +53,14 @@
         direction: rtl;
       }
 
+      .tab {
+        display: none;
+        width: 100%;
+        color: white;
+        text-align: right;
+        line-height: 1.5;
+      }
+
       #title {
         width: 100%;
         font-size: 40px;
@@ -74,15 +82,6 @@
         color: white;
       }
 
-      .subsubtitle {
-        width: 100%;
-        font-size: 12px;
-        font-weight: bold;
-        margin-top: 5px;
-        text-align: right;
-        color: white;
-      }
-
       #header {
         width: 100%;
         box-sizing: border-box;
@@ -91,6 +90,43 @@
         width: 100%;
         height: 1px;
         background-color: white;
+      }
+
+      .downloadButton {
+        display: flex;
+  flex-direction: column;
+  align-items: center;
+        height: 150px;
+        border-radius: 12px;
+        text-align: center;
+        cursor: pointer;
+        padding-top: 25px;
+        background-color: white;
+        color: black;
+        width: 31%;
+        margin-bottom: 20px;
+      }
+
+      .downloadButton a {
+        text-decoration: none;
+      }
+
+      a:visited {
+        color: inherit;
+      }
+      .downloadButton:hover {
+        color: white;
+        background-color: black;
+      }
+
+      .downloadButton a svg {
+        filter: none;
+        stroke: black; /* Set the color for the SVG */
+      }
+
+      .downloadButton:hover a svg {
+        filter: none;
+        stroke: white; /* Set the color for the SVG on hover */
       }
 
       .icon {
@@ -105,6 +141,37 @@
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
+      }
+
+      .downloadsList {
+        margin-top: 20px;
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      #tabs {
+        padding-top: 20px;
+        display: flex;
+        justify-content: flex-start;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.557);
+        width: 100%;
+        direction: rtl;
+      }
+
+      #tabs .selected {
+        border-bottom: 1px solid white;
+      }
+      #tabs button {
+        background-color: inherit;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+
+      #tabs button:hover {
+        border-bottom: 1px solid white;
       }
 
       body {
@@ -123,114 +190,359 @@
   <body>
     <div id="content">
       <div id="container">
-        <div id="header">
-          <div id="title">
-            <div id="icons">
-              <a
-                href="https://www.facebook.com/pottercast.podcast"
-                target="_blank"
-                class="icon"
-              >
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fab"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
+        <div id="tabs">
+          <button id="tab-main" onclick="showTab('main')">ראשי</button>
+          <button id="tab-credits" onclick="showTab('credits')">קרדיטים</button>
+          <button id="tab-downloads" onclick="showTab('downloads')">
+            הורדות
+          </button>
+          <button id="tab-press" onclick="showTab('press')">עיתונות</button>
+        </div>
+        <div id="main-container" class="tab">
+          <div id="header">
+            <div id="title">
+              <div id="icons">
+                <a
+                  href="https://www.facebook.com/pottercast.podcast"
+                  target="_blank"
+                  class="icon"
                 >
-                  <path
-                    fill="currentColor"
-                    d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
-                  ></path>
-                </svg>
-              </a>
-              <a
-                href="https://www.youtube.com/@user-sh2tx4pe6j"
-                target="_blank"
-                class="icon"
-              >
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fab"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512"
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fab"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
+                    ></path>
+                  </svg>
+                </a>
+                <a
+                  href="https://www.youtube.com/@user-sh2tx4pe6j"
+                  target="_blank"
+                  class="icon"
                 >
-                  <path
-                    fill="currentColor"
-                    d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
-                  ></path>
-                </svg>
-              </a>
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fab"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 576 512"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+                    ></path>
+                  </svg>
+                </a>
+                <a
+                  href="https://open.spotify.com/track/5hRAniXflp7qDFOCw49qWL?si=8691f23961734e71"
+                  target="_blank"
+                  class="icon"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                    <path
+                      fill="currentColor"
+                      d="M25.009,1.982C12.322,1.982,2,12.304,2,24.991S12.322,48,25.009,48s23.009-10.321,23.009-23.009S37.696,1.982,25.009,1.982z M34.748,35.333c-0.289,0.434-0.765,0.668-1.25,0.668c-0.286,0-0.575-0.081-0.831-0.252C30.194,34.1,26,33,22.5,33.001 c-3.714,0.002-6.498,0.914-6.526,0.923c-0.784,0.266-1.635-0.162-1.897-0.948s0.163-1.636,0.949-1.897 c0.132-0.044,3.279-1.075,7.474-1.077C26,30,30.868,30.944,34.332,33.253C35.022,33.713,35.208,34.644,34.748,35.333z M37.74,29.193 c-0.325,0.522-0.886,0.809-1.459,0.809c-0.31,0-0.624-0.083-0.906-0.26c-4.484-2.794-9.092-3.385-13.062-3.35 c-4.482,0.04-8.066,0.895-8.127,0.913c-0.907,0.258-1.861-0.272-2.12-1.183c-0.259-0.913,0.272-1.862,1.184-2.12 c0.277-0.079,3.854-0.959,8.751-1c4.465-0.037,10.029,0.61,15.191,3.826C37.995,27.328,38.242,28.388,37.74,29.193z M40.725,22.013 C40.352,22.647,39.684,23,38.998,23c-0.344,0-0.692-0.089-1.011-0.275c-5.226-3.068-11.58-3.719-15.99-3.725 c-0.021,0-0.042,0-0.063,0c-5.333,0-9.44,0.938-9.481,0.948c-1.078,0.247-2.151-0.419-2.401-1.495 c-0.25-1.075,0.417-2.149,1.492-2.4C11.729,16.01,16.117,15,21.934,15c0.023,0,0.046,0,0.069,0 c4.905,0.007,12.011,0.753,18.01,4.275C40.965,19.835,41.284,21.061,40.725,22.013z"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+              פוטרקאסט
             </div>
-            פוטרקאסט
+            <p class="subtitle">בראי של ינפתא</p>
+            <p class="seperator"></p>
           </div>
-          <p class="subtitle">בראי של ינפתא</p>
-          <p class="seperator"></p>
-          <p class="subsubtitle">מילים: מורן קלפר, יותם רוזנטל, נועם כליפה</p>
-          <p class="subsubtitle">לחן: יותם רוזנטל</p>
+
+          <div id="video-container">
+            <iframe
+              id="youtube-video"
+              src="https://www.youtube.com/embed/qCwuRI-xqfo?si=NTztakaLvPhx2Usx"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div id="lyrics-container">
+            <!-- Add your lyrics content here -->
+            <p>
+              בית 1<br />
+              הרכבת להוגוורטס כבר יצאה,<br />
+              אני והיא כבר לא נהיה ביחד,<br />
+              עוד דקה ועוד דקה עברה,<br />
+              אני גריפינדור אבל מולה מלא בפחד.<br /><br />
+
+              מוכן לרוץ ליער האסור,<br />
+              להתמודד עם כל המפלצות לבד,<br />
+              אבל, בבקשה, אל תבקשו ממני,<br />
+              להזמין אותה לנשף חג המולד.<br /><br />
+
+              פזמון:<br />
+              מה לא שמעת?<br />
+              אנחנו ביחד בראי של ינפתא,<br />
+              הלב שלי כמו זנבקרנית הונגרית,<br />
+              הוא משתולל בלי תכלית.<br /><br />
+
+              בית 2:<br />
+              אולי מישהו כישף אותי,<br />
+              כי רק בך אני מתאהב,<br />
+              להקה של ויליות עברו לידך,<br />
+              אבל אני לא מצליח להתלהב.<br /><br />
+
+              פזמון 2:<br />
+              מה לא שמעת?<br />
+              אנחנו ביחד בראי של ינפתא,<br />
+              הלב שלי כמו נימבוס 2000<br />
+              איתך הוא מרחף בשמיים<br /><br />
+
+              מה לא שמעת?<br />
+              אנחנו ביחד, בראי של ינפתא<br />
+              מה לא הרגשת?<br />
+              הלב שלי הוא כמו, כמו,<br /><br />
+
+              הרכבת להוגוורטס כבר יצאה<br />
+              אני והיא כבר לא נהיה ביחד<br /><br /><br />
+            </p>
+            <p class="seperator"></p>
+          </div>
         </div>
-
-        <div id="video-container">
-          <iframe
-            id="youtube-video"
-            src="https://www.youtube.com/embed/qCwuRI-xqfo?si=NTztakaLvPhx2Usx"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-
-        <div id="lyrics-container">
-          <!-- Add your lyrics content here -->
+        <div id="credits-container" class="tab">
           <p>
-            בית 1<br />
-            הרכבת להוגוורטס כבר יצאה,<br />
-            אני והיא כבר לא נהיה ביחד,<br />
-            עוד דקה ועוד דקה עברה,<br />
-            אני גריפינדור אבל מולה מלא בפחד.<br /><br />
+            מילים: מורן קלפר, יותם רוזנטל, נועם כליפה<br />
+            לחן: יותם רוזנטל<br />
 
-            מוכן לרוץ ליער האסור,<br />
-            להתמודד עם כל המפלצות לבד,<br />
-            אבל, בבקשה, אל תבקשו ממני,<br />
-            להזמין אותה לנשף חג המולד.<br /><br />
-
-            פזמון:<br />
-            מה לא שמעת?<br />
-            אנחנו ביחד בראי של ינפתא,<br />
-            הלב שלי כמו זנבקרנית הונגרית,<br />
-            הוא משתולל בלי תכלית.<br /><br />
-
-            בית 2:<br />
-            אולי מישהו כישף אותי,<br />
-            כי רק בך אני מתאהב,<br />
-            להקה של ויליות עברו לידך,<br />
-            אבל אני לא מצליח להתלהב.<br /><br />
-
-            פזמון 2:<br />
-            מה לא שמעת?<br />
-            אנחנו ביחד בראי של ינפתא,<br />
-            הלב שלי כמו נימבוס 2000<br />
-            איתך הוא מרחף בשמיים<br /><br />
-
-            מה לא שמעת?<br />
-            אנחנו ביחד, בראי של ינפתא<br />
-            מה לא הרגשת?<br />
-            הלב שלי הוא כמו, כמו,<br /><br />
-
-            הרכבת להוגוורטס כבר יצאה<br />
-            אני והיא כבר לא נהיה ביחד<br /><br /><br />
-          </p>
-          <p class="seperator"></p>
-          <p>
             שירה: נועם כליפה<br />
             גיטרות: אסף טל<br />
             עיבוד והפקה: יותם רוזנטל<br />
           </p>
         </div>
+
+        <div id="downloads-container" class="tab">
+          <ul class="downloadsList">
+            <li class="downloadButton" onclick="downloadSong()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="59"
+                height="74"
+                viewBox="0 0 59 74"
+              >
+                <defs>
+                  <path
+                    id="vdk3ggbz4a"
+                    d="M12 3c.552 0 1 .448 1 1v13.585l4.293-4.292c.36-.36.928-.388 1.32-.083l.094.083c.39.39.39 1.024 0 1.414l-6 6c-.028.029-.059.055-.09.08l-.022.017c-.024.018-.049.034-.074.05l-.037.021c-.02.011-.04.022-.06.031l-.053.023-.06.021-.045.014-.065.016-.053.009c-.048.007-.097.011-.148.011l.085-.004c-.017.002-.034.003-.052.003L12 21h-.033l-.053-.004-.063-.007-.052-.01c-.022-.004-.043-.009-.065-.015l-.046-.014-.06-.021-.051-.023-.061-.03-.037-.022c-.025-.016-.05-.032-.074-.05-.04-.03-.077-.061-.112-.097l.09.08c-.031-.025-.062-.051-.09-.08l-6-6c-.39-.39-.39-1.024 0-1.414.39-.39 1.024-.39 1.414 0L11 17.585V4c0-.513.386-.936.883-.993z"
+                  />
+                </defs>
+                <g fill="none" fill-rule="evenodd">
+                  <g>
+                    <g>
+                      <g stroke="#394553" stroke-width="2.5">
+                        <path
+                          stroke-linejoin="round"
+                          d="M11.237 5.011l.191 1.148c1.059 5.501 5.112 4.823 7.331 3.488 1.144-.688 2.438-1.145 2.438-1.145 2.121-.713 4.563-1.122 7.309-1.122 2.745 0 5.188.408 7.31 1.122 0 0 1.295.457 2.438 1.145 2.219 1.335 6.273 2.013 7.332-3.488l.178-1.09"
+                          transform="translate(-268 -532) translate(269 534.221)"
+                        />
+                        <path
+                          stroke-linejoin="round"
+                          d="M54.391 28.386C54.537 13.203 48.879 0 28.5 0 8.121 0 2.462 13.204 2.61 28.386"
+                          transform="translate(-268 -532) translate(269 534.221)"
+                        />
+                        <g>
+                          <g>
+                            <path
+                              d="M14.299.344l-3.595.477c-2.727.361-4.661 2.888-4.301 5.611l1.854 14.004c.361 2.728 2.887 4.662 5.613 4.301l3.594-.477L14.299.344z"
+                              transform="translate(-268 -532) translate(269 534.221) translate(0 27.779)"
+                            />
+                            <path
+                              d="M6.828 4.289l-2.841.36C1.832 4.922.293 6.911.566 9.062l1.403 11.069c.273 2.155 2.259 3.694 4.414 3.421l2.841-.36"
+                              transform="translate(-268 -532) translate(269 534.221) translate(0 27.779)"
+                            />
+                          </g>
+                          <g>
+                            <path
+                              d="M.535 24.26l3.595.477c2.726.361 5.252-1.573 5.612-4.301l1.854-14.004c.36-2.724-1.573-5.25-4.301-5.611L3.7.344.535 24.26z"
+                              transform="translate(-268 -532) translate(269 534.221) translate(0 27.779) translate(39)"
+                            />
+                            <path
+                              d="M8.777 23.192l2.841.36c2.154.273 4.141-1.266 4.413-3.421l1.403-11.069c.272-2.151-1.267-4.14-3.421-4.413l-2.842-.36"
+                              transform="translate(-268 -532) translate(269 534.221) translate(0 27.779) translate(39)"
+                            />
+                          </g>
+                        </g>
+                      </g>
+                      <g
+                        transform="translate(-268 -532) translate(269 534.221) translate(17 46.459)"
+                      >
+                        <mask id="i66lz2b2mb" fill="#fff">
+                          <use xlink:href="#vdk3ggbz4a" />
+                        </mask>
+                        <use
+                          fill="#000"
+                          fill-rule="nonzero"
+                          xlink:href="#vdk3ggbz4a"
+                        />
+                        <g fill="#000" mask="url(#i66lz2b2mb)">
+                          <path d="M0 0H24V24H0z" />
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g></svg>
+              <span>הורדת השיר</span>
+            </li>
+            <li class="downloadButton" onclick="downloadCredits()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="49"
+                height="65"
+                viewBox="0 0 49 65"
+              >
+                <g fill="none" fill-rule="evenodd" stroke-linejoin="round">
+                  <g stroke="#394553" stroke-width="2.5">
+                    <g>
+                      <g
+                        fill="#39434E"
+                        fill-rule="nonzero"
+                        stroke-linecap="round"
+                      >
+                        <path
+                          d="M.5 8.02L30.5 8.02M.5.748L30.5.748M.5 15.29L30.5 15.29M.5 22.561L30.5 22.561M.5 29.832L22 29.832"
+                          transform="translate(-79 -332) translate(80 333) translate(8 10)"
+                        />
+                      </g>
+                      <g>
+                        <path
+                          d="M3.819 62.596c-1.649 0-3-1.351-3-3V3.403c0-1.649 1.351-3 3-3h39.36c1.65 0 3 1.351 3 3v56.192c0 1.649-1.35 3-3 3H3.819v.001zM1.083 49.688L45.918 49.688"
+                          transform="translate(-79 -332) translate(80 333)"
+                        />
+                        <path
+                          stroke-linecap="round"
+                          d="M21.285 56.276L25.715 56.276"
+                          transform="translate(-79 -332) translate(80 333)"
+                        />
+                      </g>
+                    </g>
+                  </g>
+                </g></svg>
+              <span style="margin-top: 6px;">קרדיטים</span>
+            </li>
+            <li class="downloadButton" onclick="downloadLyrics()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="49"
+                height="69"
+                viewBox="0 0 49 69"
+              >
+                <g fill="none" fill-rule="evenodd">
+                  <g filter="url(#503jvz3wja)" transform="translate(-273 -321)">
+                    <g stroke="#394553" stroke-width="2.5">
+                      <path
+                        stroke-linejoin="round"
+                        d="M35.361 33.599v3.636c0 6.236-5.104 11.338-11.338 11.338h-3.046c-6.236 0-11.338-5.102-11.338-11.338v-3.636"
+                        transform="translate(275 323)"
+                      />
+                      <g stroke-linecap="round">
+                        <g>
+                          <path
+                            stroke-linejoin="round"
+                            d="M.911 10.868L8.675 10.868M.911 16.463L8.675 16.463"
+                            transform="translate(275 323) translate(9)"
+                          />
+                          <path
+                            d="M8.675 22.055H.64V11.57C.64 5.334 5.742.231 11.978.231h3.046c6.234 0 11.338 5.103 11.338 11.339v16.7"
+                            transform="translate(275 323) translate(9)"
+                          />
+                        </g>
+                        <g stroke-linejoin="round">
+                          <path
+                            d="M.326.868L8.09.868M.326 6.463L8.09 6.463M.326 12.055L8.09 12.055"
+                            transform="translate(275 323) translate(9) translate(18 10)"
+                          />
+                        </g>
+                      </g>
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M13.048 64.77L31.396 64.77"
+                        transform="translate(275 323)"
+                      />
+                      <path
+                        stroke-linejoin="round"
+                        d="M22.5 54.998L22.5 64.664"
+                        transform="translate(275 323)"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M36.645 31.641c0 1.1-.898 2-2 2h-24.29c-1.1 0-2-.9-2-2v-1.25c0-1.1.9-2 2-2h24.29c1.102 0 2 .9 2 2v1.25z"
+                        transform="translate(275 323)"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M44.996 30.724h-3.639v6.511c0 9.561-7.777 17.338-17.338 17.338h-3.04c-9.56 0-17.338-7.777-17.338-17.338v-6.511H.002"
+                        transform="translate(275 323)"
+                      />
+                    </g>
+                  </g>
+                </g></svg>
+              <span>מילים</span>
+            </li>
+          </ul>
+        </div>
+        <div id="press-container" class="tab">
+          <p></p>
+        </div>
       </div>
     </div>
+    <script>
+      function showTab(tabName) {
+        // Hide all tabs
+        document.getElementById("main-container").style.display = "none";
+        document.getElementById("credits-container").style.display = "none";
+        document.getElementById("downloads-container").style.display = "none";
+        document.getElementById("press-container").style.display = "none";
+        // Remove the 'selected' class from all buttons
+        document.querySelectorAll("#tabs button").forEach((btn) => {
+          btn.classList.remove("selected");
+        });
+        // Show the selected tab
+        document.getElementById(tabName + "-container").style.display = "block";
+        document.getElementById("tab-" + tabName).classList.add("selected");
+      }
+      function downloadSong() {
+        const file = "PotterCast_Erised.mp3";
+        download("./downloads/" + file, file);
+      }
+
+      function downloadLyrics() {
+        const file = "PotterCast_Erised_Lyrics.pdf";
+        download("./downloads/" + file, file);
+      }
+
+      function downloadCredits() {
+        const file = "PotterCast_Erised_Credits.pdf";
+        download("./downloads/" + file, file);
+      }
+
+      function download(url, file) {
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = file;
+        link.style.display = "none";
+        link.target = "_blank";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      showTab("main");
+    </script>
   </body>
 </html>
