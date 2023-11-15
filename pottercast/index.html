@@ -174,6 +174,26 @@
         border-bottom: 1px solid white;
       }
 
+      #pressHeader {
+        direction: rtl;
+        display: flex;
+        flex-direction: row;
+        align-items: right;
+        width: 100%;
+      }
+      .press-file {
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      .press-file svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      #pressTitle {
+        font-weight: 600;
+      }
+
       body {
         background-image: none;
         background-repeat: no-repeat, repeat;
@@ -497,7 +517,20 @@
           </ul>
         </div>
         <div id="press-container" class="tab">
-          <p></p>
+          <div id="pressHeader">
+          <p id="pressTitle">הורדת קובץ לעיתונות: </p>
+          <p class="press-file" onclick="downloadPressPdf()">
+            PDF
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path></svg>
+          </p>
+          <p class="press-file" onclick="downloadPressWord()">
+            WORD
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path></svg>
+          </p>
+        </div>
+        <div>
+          <iframe src="press/PoterCast_Erised_Press.pdf" width="100%" height="600px"></iframe>
+        </div>
         </div>
       </div>
     </div>
@@ -529,6 +562,16 @@
       function downloadCredits() {
         const file = "PotterCast_Erised_Credits.pdf";
         download("./downloads/" + file, file);
+      }
+
+      function downloadPressPdf() {
+        const file = "PoterCast_Erised_Press.pdf";
+        download("./press/" + file, file);
+      }
+
+      function downloadPressWord() {
+        const file = "PoterCast_Erised_Press.doc";
+        download("./press/" + file, file);
       }
 
       function download(url, file) {
